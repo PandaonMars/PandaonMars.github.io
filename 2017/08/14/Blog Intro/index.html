@@ -92,9 +92,6 @@
 
 
 
-  <meta property="fb:admins" content="qunwang.tony@gmail.com" />
-  <meta property="fb:app_id" content="1146555748821630" />
-
 
 
 <meta name="description" content="In Sitcom Seinfeld, George used to say “it’s about nothing.” Actually doing nothing is doing everything. Wu Wei 无为 is a similar philosophy thought in Dao De Jing[1]. This blog will be everything, not">
@@ -145,24 +142,6 @@
 
   <title>Blog Intro | Panda on Mars</title>
   
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1146555748821630',
-      xfbml      : true,
-      version    : 'v2.10'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
 
 
 
@@ -412,7 +391,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/14/Blog Intro/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://pandaonmars.github.io/2017/08/14/Blog Intro/" itemprop="commentCount">0</span> comments
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/14/Blog Intro/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -485,22 +465,6 @@
 
       
       
-        <div class="post-widgets">
-        
-
-        
-          <div class="social-like">
-            
-
-            
-              <div class="fb_like">
-                <div class="fb-like" data-layout="button_count" data-share="true"></div>
-              </div>
-            
-          </div>
-        
-        </div>
-      
       
 
       
@@ -549,11 +513,11 @@
           
   <div class="comments" id="comments">
     
-      <div class="fb-comments"
-           data-href="https://pandaonmars.github.io/2017/08/14/Blog Intro/"
-           data-numposts="5"
-           data-width="100%"
-           data-colorscheme="light">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -594,7 +558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -826,6 +790,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://pandaonmars.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://pandaonmars.github.io/2017/08/14/Blog Intro/';
+          this.page.identifier = '2017/08/14/Blog Intro/';
+          this.page.title = 'Blog Intro';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pandaonmars.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -838,10 +822,6 @@
   
 
 
-
-
-
-  
 
 
 
