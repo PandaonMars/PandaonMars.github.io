@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Two Sum]]></title>
+    <url>%2F2019%2F01%2F21%2FTwo%20Sum%20old%2F</url>
+    <content type="text"><![CDATA[Given an array of integers, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are zero-based. http://www.lintcode.com/problem/two-sum/ Solution #1 - Brute Force search. O(n) Space, O(n^2) time 1234567891011121314class Solution: """ @param numbers: An array of Integer @param target: target = numbers[index1] + numbers[index2] @return: [index1, index2] (index1 &lt; index2) """ def twoSum(self, numbers, target): for i, n in enumerate(numbers): for j, m in enumerate(numbers[i+1:], i+1): if n + m == target: return [i, j] return [-1, -1] Solution #2 - Double pointer. O(n) Space, O(nlogn)time Solution #3 - Hash. O(n) Space, O(n)time 12345678910111213class Solution: """ @param numbers: An array of Integer @param target: target = numbers[index1] + numbers[index2] @return: [index1, index2] (index1 &lt; index2) """ def twoSum(self, numbers, target): d = &#123;&#125; for i in range(len(numbers)): if target - numbers[i] in d: return [d[target - numbers[i]], i] d[numbers[i]] = i return [-1, -1]]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Week 13 Summary]]></title>
+    <url>%2F2017%2F11%2F12%2FWeek-13-Summary%2F</url>
+    <content type="text"><![CDATA[Overview Rating Score Sum 42/6 Daily average 7.00 Compared to Last Week -1.00 Dived into the huge hole of TensorFlow. Got cold because of changing weather. Project Finished: Built TensorFlow model to recognize Captcha. Project Working On: Problem Solving with Algorithms and Data Structures using Python, by Brad Miller and David Ranum, 80% to 85% Fon-Fon, by Nazareth, Ernesto, 60% to 70% Things Need to Improve Important FIRST. Make plans for tomorrow before sleep and analysis it after. Pre-analysis and post-analysis for decisions. Strength of left lower back. Get up early and do the important thing first. Week 12 Plan Finish Problem Solving with Algorithms and Data Structures using Python. Assignments of Data Science Class. Write letter to professors. Daily Rating Criteria Subject Score Important thing FIRST 3 Plan ahead 2 Mindfulness and Noting 1 Programming 1 Get up at 6:30 1 Piano, Exercise, Pronunciation 1 Daily Summary 1 A Few Thoughts Sickness affected me a lot. Slept and ate a lot more. Body weight increased. Getting recovery.]]></content>
+      <categories>
+        <category>Weekly Summary</category>
+      </categories>
+      <tags>
+        <tag>Summary</tag>
+        <tag>Weekly Summary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Week 12 Summary]]></title>
     <url>%2F2017%2F11%2F06%2FWeek-12-Summary%2F</url>
-    <content type="text"><![CDATA[Overview Rating Score Sum 44/6 Daily average 7.33 Compared to Last Week +2.33 Successfully crawled data from Craigslist. Went to some good restaurants. Played two nice tennis games. Project Finished: First python crawler project. Project Working On: Problem Solving with Algorithms and Data Structures using Python, by Brad Miller and David Ranum, 80% to 85% Fon-Fon, by Nazareth, Ernesto, 30% to 50% Body weight is up to 173.8lb, keep waistline at 83cm Things Need to Improve Important FIRST. Make plans for tomorrow before sleep and analysis it after. Pre-analysis and post-analysis for decisions. Strength of left lower back. Get up early and do the important thing first. Week 12 Plan Finish Problem Solving with Algorithms and Data Structures using Python. Create Framework for SugAR Poke with Django Join one big event relating to Machine learning Write letter to professors. Daily Rating Criteria Subject Score Important thing FIRST 3 Plan ahead 2 Mindfulness and Noting 1 Programming 1 Get up at 6:30 1 Piano, Exercise, Pronunciation 1 Daily Summary 1 A Few Thoughts I always have difficulties with gloomy weather. Will do the following tests: Turn on light after wake up. Eat Vitamin D. Meditate and exercise more. Focus more in the first three hours after getting up.]]></content>
+    <content type="text"><![CDATA[Overview Rating Score Sum 48/6 Daily average 8.00 Compared to Last Week +0.67 Modified crawler, nice dinner with Kristo, really good tennis in BC. Project Finished: Modified crawler project. Project Working On: Problem Solving with Algorithms and Data Structures using Python, by Brad Miller and David Ranum, 80% to 85% Fon-Fon, by Nazareth, Ernesto, 50% to 60% Body weight is up to 174.8lb, waistline up to 84cm Things Need to Improve Important FIRST. Make plans for tomorrow before sleep and analysis it after. Pre-analysis and post-analysis for decisions. Strength of left lower back. Get up early and do the important thing first. Week 13 Plan Finish Problem Solving with Algorithms and Data Structures using Python. Join one big event relating to Machine learning Write letter to professors. Daily Rating Criteria Subject Score Important thing FIRST 3 Plan ahead 2 Mindfulness and Noting 1 Programming 1 Get up at 6:30 1 Piano, Exercise, Pronunciation 1 Daily Summary 1 A Few Thoughts Wasted too much time on small games. Think More. Optimize More. Still in SAD.]]></content>
       <categories>
         <category>Weekly Summary</category>
       </categories>
