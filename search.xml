@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Two Sum]]></title>
+    <title><![CDATA[Algorithm Practice - 1/23/2019]]></title>
+    <url>%2F2019%2F01%2F23%2FAlgorithm-Practice-1-23-2019%2F</url>
+    <content type="text"><![CDATA[Repeated Substring Pattern Number of Boomerangs Multi-keyword Sort 1. Repeated Substring PatternGiven a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000. Solution: a. Find out all divisors - i of len(s)b. Compare that if sub string * i and s are the same.O(len(s) * i) time 123456789101112class Solution: """ @param s: a string @return: return a boolean """ def repeatedsubStringPattern(self, s): n = len(s) for i in [x for x in range(2, n+1) if n % x == 0]: if s[: int(n/i)] * i == s: return True return False 2. Number of BoomerangsGiven n points in the plane that are all pairwise distinct, a “boomerang” is a tuple of points (i, j, k) such that the distance between i and j equals the distance between i and k (the order of the tuple matters). Find the number of boomerangs. You may assume that n will be at most 500 and coordinates of points are all in the range [-10000, 10000] (inclusive). Solution: Use double loop. First one for a fixed point, second for a moving point. Then find out how many points have the same distance and save in count. At last, use permutation to count how many points together. O(n^2) time 123456789101112131415161718192021222324class Solution: """ @param points: a 2D array @return: the number of boomerangs """ def numberOfBoomerangs(self, points): # Write your code here count = 0 for fixed in points: d = &#123;&#125; for moving in points: if fixed == moving: continue distance = self.getDistance(fixed, moving) countofdistance = d.get(distance, 0) d[distance] = countofdistance + 1 for distance in d: count += d[distance] * (d[distance] - 1) return count def getDistance(self, x, y): return (x[1] - y[1]) ** 2 + (x[0] - y[0]) ** 2 3. Multi-keyword SortGiven n students and their test scores, expressed as (student number, test scores), sort by test scores in descending order, if the test scores are the same, sort the student number in ascending order. Solution: Use lambda, one sentence. 12345678class Solution: """ @param array: the input array @return: the sorted array """ def multiSort(self, array): # Write your code here return sorted(array, key = lambda x : (-x[1], x[0]))]]></content>
+      <categories>
+        <category>Algorithm Practice</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Algorithm Practice - Two Sum]]></title>
     <url>%2F2019%2F01%2F21%2FTwo%20Sum%20old%2F</url>
     <content type="text"><![CDATA[Given an array of integers, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are zero-based. http://www.lintcode.com/problem/two-sum/ Solution #1 - Brute Force search. O(n) Space, O(n^2) time 1234567891011121314class Solution: """ @param numbers: An array of Integer @param target: target = numbers[index1] + numbers[index2] @return: [index1, index2] (index1 &lt; index2) """ def twoSum(self, numbers, target): for i, n in enumerate(numbers): for j, m in enumerate(numbers[i+1:], i+1): if n + m == target: return [i, j] return [-1, -1] Solution #2 - Double pointer. O(n) Space, O(nlogn)time Solution #3 - Hash. O(n) Space, O(n)time 12345678910111213class Solution: """ @param numbers: An array of Integer @param target: target = numbers[index1] + numbers[index2] @return: [index1, index2] (index1 &lt; index2) """ def twoSum(self, numbers, target): d = &#123;&#125; for i in range(len(numbers)): if target - numbers[i] in d: return [d[target - numbers[i]], i] d[numbers[i]] = i return [-1, -1]]]></content>
       <categories>
-        <category>Algorithm</category>
+        <category>Algorithm Practice</category>
       </categories>
       <tags>
         <tag>Python</tag>
