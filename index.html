@@ -6,7 +6,7 @@
 <title>Qun Wang · Panda on Mars — 归一 / Back to One</title>
 <meta name="description" content="Qun Wang (Panda on Mars) — fund architect, AI &amp; cloud engineer, and builder of 归一 / Back to One. Knowledge as action, 知行合一. 归藏万物，见其唯一.">
 <meta name="author" content="Qun Wang">
-<meta name="theme-color" content="#05060a">
+<meta name="theme-color" content="#14132b">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
@@ -24,10 +24,10 @@
 
 <style>
   :root{
-    --bg:#05060a;
-    --bg-2:#0a0b14;
-    --panel:rgba(255,255,255,.035);
-    --panel-brd:rgba(255,255,255,.09);
+    --bg:#14132b;
+    --bg-2:#1d1b3a;
+    --panel:rgba(255,255,255,.05);
+    --panel-brd:rgba(255,255,255,.12);
     --ink:#eceeffa8;
     --ink-strong:#f3f4fb;
     --muted:#9aa0b8;
@@ -43,7 +43,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    background:var(--bg);
+    background:linear-gradient(180deg,#1c1a45 0%,#161533 30%,#141230 60%,#12112a 100%);
     color:var(--ink);
     font-family:'Sora',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     font-weight:300;
@@ -61,9 +61,10 @@
   #stars{position:fixed;inset:0;z-index:-3;display:block}
   .bg-glow{position:fixed;inset:0;z-index:-2;pointer-events:none;
     background:
-      radial-gradient(60vw 60vw at 78% -8%, rgba(255,94,58,.16), transparent 60%),
-      radial-gradient(55vw 55vw at 12% 8%, rgba(139,108,255,.15), transparent 62%),
-      radial-gradient(80vw 50vw at 50% 108%, rgba(139,108,255,.10), transparent 60%);
+      radial-gradient(58vw 58vw at 80% -6%, rgba(255,110,70,.30), transparent 60%),
+      radial-gradient(52vw 52vw at 10% 6%, rgba(150,120,255,.30), transparent 62%),
+      radial-gradient(46vw 46vw at 92% 58%, rgba(255,150,90,.14), transparent 60%),
+      radial-gradient(80vw 55vw at 50% 112%, rgba(140,110,255,.20), transparent 62%);
   }
   .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;
     background-image:radial-gradient(rgba(255,255,255,.35) .5px, transparent .5px);
@@ -83,7 +84,7 @@
   /* ---------- nav ---------- */
   header.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .4s var(--ease)}
   .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between}
-  header.nav.scrolled{background:rgba(7,8,14,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--panel-brd)}
+  header.nav.scrolled{background:rgba(22,21,51,.74);backdrop-filter:blur(16px);border-bottom:1px solid var(--panel-brd)}
   header.nav.scrolled .nav-inner{padding:13px 26px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:600;font-size:16px;color:var(--ink-strong)}
   .brand .orb{width:22px;height:22px;border-radius:50%;
@@ -130,7 +131,7 @@
   .btn svg{width:16px;height:16px}
 
   /* floating planet */
-  .planet{position:absolute;right:-90px;top:14%;width:min(46vw,520px);aspect-ratio:1;border-radius:50%;
+  .planet{position:absolute;right:3vw;top:12%;width:min(40vw,460px);aspect-ratio:1;border-radius:50%;
     background:
       radial-gradient(circle at 34% 30%, #ffb489 0%, #ff6a41 26%, #c9391b 55%, #6d1c0d 82%, #380d05 100%);
     box-shadow:inset -40px -30px 90px rgba(0,0,0,.65), 0 0 120px rgba(255,94,58,.28);
@@ -247,7 +248,7 @@
   /* ---------- responsive ---------- */
   @media(max-width:860px){
     .navlinks{position:fixed;inset:0 0 0 auto;width:min(78vw,320px);flex-direction:column;justify-content:center;
-      gap:28px;background:rgba(8,9,16,.96);backdrop-filter:blur(18px);border-left:1px solid var(--panel-brd);
+      gap:28px;background:rgba(20,19,43,.97);backdrop-filter:blur(18px);border-left:1px solid var(--panel-brd);
       transform:translateX(100%);transition:transform .45s var(--ease);padding:40px}
     .navlinks.open{transform:none}
     .navlinks a{font-size:18px}
@@ -256,7 +257,7 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .planet{opacity:.5;top:6%;right:-40%}
+    .planet{opacity:.42;top:5%;right:-18%;width:min(66vw,340px)}
     section{padding:80px 0}
     .writing{padding:38px 28px}
   }
@@ -524,7 +525,7 @@
     ctx.clearRect(0,0,W,H);
     for(var i=0;i<stars.length;i++){
       var s = stars[i]; s.tw += s.sp;
-      var a = (Math.sin(s.tw)*.35+.55) * (0.35 + s.z*0.65);
+      var a = (Math.sin(s.tw)*.35+.62) * (0.5 + s.z*0.55);
       ctx.beginPath();
       ctx.fillStyle = 'rgba('+tint[i%3]+','+a.toFixed(2)+')';
       ctx.arc(s.x, s.y, s.r*(0.6+s.z), 0, 6.283);
