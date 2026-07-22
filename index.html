@@ -132,19 +132,39 @@
   .btn.ghost:hover{border-color:var(--cosmos-2);background:rgba(224,104,74,.09);transform:translateY(-3px)}
   .btn svg{width:16px;height:16px}
 
-  /* floating planet (rising Mars) */
-  .planet{position:absolute;right:2vw;top:11%;width:min(39vw,440px);aspect-ratio:1;border-radius:50%;
-    background:
-      radial-gradient(circle at 34% 30%, #ffc79c 0%, #ff7a4a 26%, #e8531f 54%, #b03410 80%, #7a1f08 100%);
-    box-shadow:inset -38px -28px 84px rgba(90,28,8,.55), 0 0 130px rgba(242,98,46,.35);
+  /* ---------- celestial bodies (Sun · Mars · Earth) ---------- */
+  .sun{position:absolute;right:-4vw;top:-18%;width:min(31vw,370px);aspect-ratio:1;border-radius:50%;
+    z-index:-1;pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,
+      #ffe89a 0%, #ffcf5e 24%, #ffb043 46%, #ff9436 62%, rgba(255,140,55,.4) 74%, rgba(255,140,55,0) 82%);
+    box-shadow:0 0 150px 34px rgba(255,178,84,.4);
+    animation:float 22s ease-in-out infinite}
+  .sun::after{content:"";position:absolute;inset:14%;border-radius:50%;
+    background:radial-gradient(circle at 50% 46%, rgba(255,244,200,.9), rgba(255,206,110,0) 70%)}
+
+  .planet{position:absolute;right:9vw;top:29%;width:min(18vw,200px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 34% 30%, #ffc79c 0%, #ff7a4a 26%, #e8531f 54%, #b03410 80%, #7a1f08 100%);
+    box-shadow:inset -20px -15px 44px rgba(90,28,8,.55), 0 0 68px rgba(242,98,46,.28);
     filter:saturate(1.04);z-index:-1;pointer-events:none;
-    animation:float 14s ease-in-out infinite}
+    animation:float 15s ease-in-out infinite;animation-delay:-3s}
   .planet::before{content:"";position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 60% 22%, transparent 60%, rgba(80,25,8,.35) 100%)}
-  .planet::after{content:"";position:absolute;inset:-14%;border-radius:50%;
-    border:1px solid rgba(200,110,50,.32);transform:rotate(-18deg) scaleY(.34);
-    box-shadow:0 0 40px rgba(242,150,90,.18)}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+    background:radial-gradient(circle at 60% 22%, transparent 58%, rgba(80,25,8,.42) 100%)}
+
+  .earth{position:absolute;right:19vw;top:63%;width:min(9.5vw,104px);aspect-ratio:1;border-radius:50%;
+    z-index:-1;pointer-events:none;
+    background:radial-gradient(circle at 36% 30%, #cfeaff 0%, #6fb2e8 28%, #2f74b4 58%, #1a4c80 82%, #0f3055 100%);
+    box-shadow:inset -9px -7px 22px rgba(6,24,45,.6), 0 0 34px rgba(90,160,230,.32);
+    animation:float 18s ease-in-out infinite reverse;animation-delay:-7s}
+  .earth::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:
+      radial-gradient(circle at 62% 38%, rgba(72,158,98,.8), transparent 22%),
+      radial-gradient(circle at 33% 66%, rgba(84,168,108,.72), transparent 19%),
+      radial-gradient(circle at 76% 72%, rgba(92,172,112,.6), transparent 15%)}
+  .earth::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 60% 22%, transparent 60%, rgba(6,24,45,.4) 100%);
+    box-shadow:0 0 15px 1px rgba(150,205,255,.5)}
+
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
 
   .scroll-hint{margin-top:60px;display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;
     letter-spacing:.2em;text-transform:uppercase;font-family:'Space Grotesk';font-weight:500}
@@ -259,7 +279,9 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .planet{opacity:.55;top:5%;right:-16%;width:min(64vw,320px)}
+    .sun{width:min(46vw,220px);right:-8vw;top:-6%}
+    .planet{opacity:.85;top:9%;right:2vw;width:min(30vw,150px)}
+    .earth{opacity:.85;top:30%;right:9vw;width:min(15vw,68px)}
     section{padding:80px 0}
     .writing{padding:38px 28px}
   }
@@ -297,7 +319,9 @@
 
 <!-- HERO -->
 <section class="hero wrap" id="hero">
+  <div class="sun" aria-hidden="true"></div>
   <div class="planet" aria-hidden="true"></div>
+  <div class="earth" aria-hidden="true"></div>
   <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
   <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
   <div class="sub-cn reveal in d1">知行合一 · Knowledge as Action</div>
@@ -541,14 +565,7 @@
   }
   if(!reduce) draw();
 
-  /* subtle parallax on planet */
-  if(!reduce){
-    var planet = document.querySelector('.planet');
-    addEventListener('scroll', function(){
-      var y = window.scrollY;
-      if(y < innerHeight*1.2) planet.style.transform = 'translateY('+(y*0.18)+'px)';
-    }, {passive:true});
-  }
+  /* the celestial bodies drift via CSS float animations (see .sun/.planet/.earth) */
 })();
 </script>
 </body>
