@@ -143,21 +143,7 @@
   #herostars{position:absolute;inset:0;width:100%;height:100%}
   .hero-bg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;
     background:linear-gradient(to bottom, transparent, #fffaf1)}
-  .pworld{position:absolute;inset:0}
-  .pw{position:absolute;transform:translate(-50%,-50%)}
-  .pl3{background:center/contain no-repeat;animation:drift 9s ease-in-out infinite}
-  .w-sun{left:80%;top:20%}      .p-sun{width:250px;height:250px;background-image:url(images/sun.png);
-    filter:drop-shadow(0 0 74px rgba(255,184,96,.8)) drop-shadow(0 0 150px rgba(255,150,70,.55));animation-duration:20s}
-  .w-mercury{left:70%;top:11%}  .p-mercury{width:30px;height:30px;background-image:url(images/mercury.png);animation-duration:7s;animation-delay:-1s}
-  .w-venus{left:62%;top:27%}    .p-venus{width:52px;height:52px;background-image:url(images/venus.png);animation-duration:8.5s;animation-delay:-3s}
-  .w-earth{left:72%;top:47%}    .p-earth{width:66px;height:66px;background-image:url(images/earth.png);
-    filter:drop-shadow(0 0 14px rgba(120,180,240,.4));animation-duration:10s;animation-delay:-5s}
-  .w-mars{left:82%;top:59%}     .p-mars{width:50px;height:50px;background-image:url(images/mars.png);animation-duration:8s;animation-delay:-2s}
-  .w-jupiter{left:64%;top:79%}  .p-jupiter{width:150px;height:150px;background-image:url(images/jupiter.png);animation-duration:13s;animation-delay:-4s}
-  .w-uranus{left:92%;top:61%}   .p-uranus{width:80px;height:80px;background-image:url(images/uranus.png);animation-duration:11s;animation-delay:-6s}
-  .w-neptune{left:94%;top:37%}  .p-neptune{width:86px;height:86px;background-image:url(images/neptune.png);animation-duration:12s;animation-delay:-1.5s}
-  .w-saturn{left:83%;top:84%}   .p-saturn{width:320px;aspect-ratio:760/311;background-image:url(images/saturn.png);animation-duration:15s;animation-delay:-7s}
-  @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  #scene{position:absolute;inset:0;width:100%;height:100%;display:block}
 
   /* dark-hero text treatment */
   .hero .grad{background:linear-gradient(105deg,#ff9a5a 0%,#ffd88a 46%,#ffa07e 86%);
@@ -302,7 +288,6 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .pworld{transform:scale(.62);transform-origin:84% 22%}
     header.nav .navlinks a{color:var(--ink-strong)}
     header.nav .navlinks a:hover{color:var(--mars-2)}
     section{padding:80px 0}
@@ -344,17 +329,7 @@
 <section class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true">
     <canvas id="herostars"></canvas>
-    <div class="pworld">
-      <div class="pw w-mercury"><div class="pl3 p-mercury"></div></div>
-      <div class="pw w-venus"><div class="pl3 p-venus"></div></div>
-      <div class="pw w-earth"><div class="pl3 p-earth"></div></div>
-      <div class="pw w-mars"><div class="pl3 p-mars"></div></div>
-      <div class="pw w-uranus"><div class="pl3 p-uranus"></div></div>
-      <div class="pw w-neptune"><div class="pl3 p-neptune"></div></div>
-      <div class="pw w-sun"><div class="pl3 p-sun"></div></div>
-      <div class="pw w-jupiter"><div class="pl3 p-jupiter"></div></div>
-      <div class="pw w-saturn"><div class="pl3 p-saturn"></div></div>
-    </div>
+    <canvas id="scene"></canvas>
   </div>
   <div class="hero-inner wrap">
     <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
@@ -523,7 +498,7 @@
 <footer>
   <div class="wrap foot">
     <span>© 2017 – <span id="year"></span> Qun Wang · <span class="cn">归藏万物，见其唯一</span></span>
-    <span>Panda on Mars 🐼 — built with intent</span>
+    <span>Panda on Mars 🐼 — built with intent · <a href="https://www.solarsystemscope.com/textures" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">planet textures</a> CC BY 4.0</span>
   </div>
 </footer>
 
@@ -642,5 +617,7 @@
   })();
 })();
 </script>
+<script src="js/three.min.js"></script>
+<script src="js/solar.js"></script>
 </body>
 </html>
