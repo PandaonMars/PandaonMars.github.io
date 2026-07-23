@@ -132,30 +132,64 @@
   .btn.ghost:hover{border-color:var(--cosmos-2);background:rgba(224,104,74,.09);transform:translateY(-3px)}
   .btn svg{width:16px;height:16px}
 
-  /* ---------- 3D orbital system: Earth + Mars revolving around a tilted Sun ---------- */
-  .solar{position:absolute;right:-140px;top:15%;width:500px;height:500px;z-index:-1;pointer-events:none;perspective:1100px}
-  .system{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
-  .ring{position:absolute;left:0;top:0;border-radius:50%;border:1px solid rgba(150,110,70,.18);
-    transform:translate(-50%,-50%) rotateX(62deg)}
-  .ring.earth-ring{width:300px;height:300px}
-  .ring.mars-ring{width:470px;height:470px}
-  .orbit{position:absolute;left:0;top:0;transform-style:preserve-3d}
-  .orbit.earth-orbit{animation:eorbit 24s linear infinite}
-  .orbit.mars-orbit{animation:morbit 46s linear -18s infinite}
-  .pl{position:absolute;left:0;top:0;border-radius:50%;background:center/contain no-repeat}
-  .earth-pl{width:90px;height:90px;margin:-45px 0 0 -45px;background-image:url(images/earth.png);
-    filter:drop-shadow(0 0 16px rgba(120,180,240,.45));animation:eplanet 24s linear infinite}
-  .mars-pl{width:56px;height:56px;margin:-28px 0 0 -28px;background-image:url(images/mars.png);
-    filter:drop-shadow(0 0 12px rgba(242,120,60,.42));animation:mplanet 46s linear -18s infinite}
-  .sun2{position:absolute;left:0;top:0;width:128px;height:128px;margin:-64px 0 0 -64px;
-    background:url(images/sun.png) center/contain no-repeat;
-    filter:drop-shadow(0 0 60px rgba(255,176,74,.6)) drop-shadow(0 0 22px rgba(255,216,128,.55))}
-  @keyframes eorbit{from{transform:rotateX(62deg) rotateZ(0deg)}to{transform:rotateX(62deg) rotateZ(360deg)}}
-  @keyframes morbit{from{transform:rotateX(62deg) rotateZ(0deg)}to{transform:rotateX(62deg) rotateZ(360deg)}}
-  @keyframes eplanet{from{transform:translateX(150px) rotateZ(0deg) rotateX(-62deg)}
-    to{transform:translateX(150px) rotateZ(-360deg) rotateX(-62deg)}}
-  @keyframes mplanet{from{transform:translateX(235px) rotateZ(0deg) rotateX(-62deg)}
-    to{transform:translateX(235px) rotateZ(-360deg) rotateX(-62deg)}}
+  /* ---------- dark-space hero: Sun + 8 planets drifting in an arc ---------- */
+  .hero{position:relative;z-index:1;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;
+    background:
+      radial-gradient(85% 70% at 80% 20%, rgba(158,80,40,.55), transparent 55%),
+      radial-gradient(50% 50% at 80% 20%, rgba(255,182,98,.32), transparent 50%),
+      radial-gradient(130% 120% at 4% 112%, rgba(24,24,52,.9), transparent 62%),
+      linear-gradient(155deg,#0a0912 0%,#150f0f 42%,#0b0a15 100%)}
+  .stars-layer{position:absolute;inset:0;background:url(images/hero-stars.svg) center/cover no-repeat;opacity:.85;
+    -webkit-mask-image:radial-gradient(60% 60% at 80% 20%, transparent 8%, #000 55%);
+    mask-image:radial-gradient(60% 60% at 80% 20%, transparent 8%, #000 55%)}
+  .hero-bg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;
+    background:linear-gradient(to bottom, transparent, #fffaf1)}
+  .pworld{position:absolute;inset:0}
+  .pw{position:absolute;transform:translate(-50%,-50%)}
+  .pl3{background:center/contain no-repeat;animation:drift 9s ease-in-out infinite}
+  .w-sun{left:80%;top:20%}      .p-sun{width:250px;height:250px;background-image:url(images/sun.png);
+    filter:drop-shadow(0 0 74px rgba(255,184,96,.8)) drop-shadow(0 0 150px rgba(255,150,70,.55));animation-duration:20s}
+  .w-mercury{left:70%;top:11%}  .p-mercury{width:30px;height:30px;background-image:url(images/mercury.png);animation-duration:7s;animation-delay:-1s}
+  .w-venus{left:62%;top:27%}    .p-venus{width:52px;height:52px;background-image:url(images/venus.png);animation-duration:8.5s;animation-delay:-3s}
+  .w-earth{left:72%;top:47%}    .p-earth{width:66px;height:66px;background-image:url(images/earth.png);
+    filter:drop-shadow(0 0 14px rgba(120,180,240,.4));animation-duration:10s;animation-delay:-5s}
+  .w-mars{left:82%;top:59%}     .p-mars{width:50px;height:50px;background-image:url(images/mars.png);animation-duration:8s;animation-delay:-2s}
+  .w-jupiter{left:64%;top:79%}  .p-jupiter{width:150px;height:150px;background-image:url(images/jupiter.png);animation-duration:13s;animation-delay:-4s}
+  .w-uranus{left:92%;top:61%}   .p-uranus{width:80px;height:80px;background-image:url(images/uranus.png);animation-duration:11s;animation-delay:-6s}
+  .w-neptune{left:94%;top:37%}  .p-neptune{width:86px;height:86px;background-image:url(images/neptune.png);animation-duration:12s;animation-delay:-1.5s}
+  .w-saturn{left:83%;top:84%}   .p-saturn{width:320px;aspect-ratio:760/311;background-image:url(images/saturn.png);animation-duration:15s;animation-delay:-7s}
+  @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  /* dark-hero text treatment */
+  .hero .grad{background:linear-gradient(105deg,#ff9a5a 0%,#ffd88a 46%,#ffa07e 86%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero h1{color:#f6f2ea}
+  .hero .sub-cn{color:#eee6d8}
+  .hero .roles{color:#efe8db}
+  .hero .roles .type{color:#ffb06a}
+  .hero p.pitch{color:rgba(244,240,232,.9)}
+  .hero p.pitch b{color:#fff}
+  .hero .badge{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);color:rgba(245,240,233,.92);
+    box-shadow:none;backdrop-filter:blur(4px)}
+  .hero .btn.ghost{border-color:rgba(255,255,255,.34);color:#fff;background:rgba(255,255,255,.07)}
+  .hero .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.15)}
+  .hero .scroll-hint{color:rgba(240,235,228,.62)}
+  .hero .scroll-hint .mouse{border-color:rgba(255,255,255,.35)}
+
+  /* nav: light over the dark hero, dark once scrolled onto the light page */
+  header.nav .brand{color:#f6f2ea}
+  header.nav .brand small{color:rgba(246,242,234,.6)}
+  header.nav .navlinks a{color:rgba(246,242,234,.82)}
+  header.nav .navlinks a:hover{color:#fff}
+  header.nav .nav-cta{color:#fff!important;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
+  header.nav .burger{color:#f6f2ea}
+  header.nav.scrolled .brand{color:var(--ink-strong)}
+  header.nav.scrolled .brand small{color:var(--muted)}
+  header.nav.scrolled .navlinks a{color:var(--muted)}
+  header.nav.scrolled .navlinks a:hover{color:var(--ink-strong)}
+  header.nav.scrolled .nav-cta{color:var(--ink-strong)!important;border-color:var(--panel-brd);background:var(--panel)}
+  header.nav.scrolled .burger{color:var(--ink-strong)}
 
   .scroll-hint{margin-top:60px;display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;
     letter-spacing:.2em;text-transform:uppercase;font-family:'Space Grotesk';font-weight:500}
@@ -270,7 +304,9 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .solar{transform:scale(.46);transform-origin:top right;right:-20px;top:-3%}
+    .pworld{transform:scale(.62);transform-origin:84% 22%}
+    header.nav .navlinks a{color:var(--ink-strong)}
+    header.nav .navlinks a:hover{color:var(--mars-2)}
     section{padding:80px 0}
     .writing{padding:38px 28px}
   }
@@ -307,33 +343,40 @@
 <main id="top">
 
 <!-- HERO -->
-<section class="hero wrap" id="hero">
-  <div class="solar" aria-hidden="true">
-    <div class="system">
-      <div class="ring earth-ring"></div>
-      <div class="ring mars-ring"></div>
-      <div class="orbit earth-orbit"><div class="pl earth-pl"></div></div>
-      <div class="orbit mars-orbit"><div class="pl mars-pl"></div></div>
-      <div class="sun2"></div>
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="stars-layer"></div>
+    <div class="pworld">
+      <div class="pw w-mercury"><div class="pl3 p-mercury"></div></div>
+      <div class="pw w-venus"><div class="pl3 p-venus"></div></div>
+      <div class="pw w-earth"><div class="pl3 p-earth"></div></div>
+      <div class="pw w-mars"><div class="pl3 p-mars"></div></div>
+      <div class="pw w-uranus"><div class="pl3 p-uranus"></div></div>
+      <div class="pw w-neptune"><div class="pl3 p-neptune"></div></div>
+      <div class="pw w-sun"><div class="pl3 p-sun"></div></div>
+      <div class="pw w-jupiter"><div class="pl3 p-jupiter"></div></div>
+      <div class="pw w-saturn"><div class="pl3 p-saturn"></div></div>
     </div>
   </div>
-  <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
-  <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
-  <div class="sub-cn reveal in d1">知行合一 · Knowledge as Action</div>
-  <div class="roles reveal in d2"><span class="type" id="typed"></span><span class="caret"></span></div>
-  <p class="pitch reveal in d3">
-    I design systems that turn observation into truth — building <b>fund architecture</b> and
-    <b>quantitative strategy</b> on rigorous <b>cloud infrastructure</b>, wired together by
-    <b>AI agents</b> and a second brain. In a world of noise, I build to find the one signal that's real.
-  </p>
-  <div class="cta-row reveal in d4">
-    <a class="btn primary" href="#work">
-      Explore the work
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <a class="btn ghost" href="#philosophy">The 归一 idea</a>
+  <div class="hero-inner wrap">
+    <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
+    <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
+    <div class="sub-cn reveal in d1">知行合一 · Knowledge as Action</div>
+    <div class="roles reveal in d2"><span class="type" id="typed"></span><span class="caret"></span></div>
+    <p class="pitch reveal in d3">
+      I design systems that turn observation into truth — building <b>fund architecture</b> and
+      <b>quantitative strategy</b> on rigorous <b>cloud infrastructure</b>, wired together by
+      <b>AI agents</b> and a second brain. In a world of noise, I build to find the one signal that's real.
+    </p>
+    <div class="cta-row reveal in d4">
+      <a class="btn primary" href="#work">
+        Explore the work
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn ghost" href="#philosophy">The 归一 idea</a>
+    </div>
+    <div class="scroll-hint reveal in d4"><span class="mouse"></span>Scroll to descend</div>
   </div>
-  <div class="scroll-hint reveal in d4"><span class="mouse"></span>Scroll to descend</div>
 </section>
 
 <!-- ABOUT -->
