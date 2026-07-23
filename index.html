@@ -132,29 +132,30 @@
   .btn.ghost:hover{border-color:var(--cosmos-2);background:rgba(224,104,74,.09);transform:translateY(-3px)}
   .btn svg{width:16px;height:16px}
 
-  /* ---------- orbital system: Earth + Mars revolving around the Sun ---------- */
-  .solar{position:absolute;right:-150px;top:13%;width:520px;height:520px;z-index:-1;pointer-events:none}
-  .solar .sun2{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;
-    border-radius:50%;background:url(images/sun.png) center/contain no-repeat;
-    filter:drop-shadow(0 0 66px rgba(255,176,74,.6)) drop-shadow(0 0 24px rgba(255,216,128,.55))}
-  .ring{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);
-    border:1px solid rgba(150,110,70,.15)}
-  .ring.earth-ring{width:310px;height:310px}
-  .ring.mars-ring{width:456px;height:456px}
-  .orbit{position:absolute;left:50%;top:50%;width:0;height:0}
-  .orbit.earth-orbit{animation:orbit 24s linear infinite}
-  .orbit.mars-orbit{animation:orbit 45s linear -18s infinite}
-  .orbit .pl{position:absolute;border-radius:50%;background:center/contain no-repeat}
-  .earth-orbit .pl{width:92px;height:92px;left:-46px;top:-201px;
-    background-image:url(images/earth.png);
-    filter:drop-shadow(0 6px 20px rgba(18,54,100,.4)) drop-shadow(0 0 18px rgba(120,180,240,.42));
-    animation:orbit-rev 24s linear infinite}
-  .mars-orbit .pl{width:58px;height:58px;left:-29px;top:-257px;
-    background-image:url(images/mars.png);
-    filter:drop-shadow(0 5px 16px rgba(90,30,8,.45)) drop-shadow(0 0 14px rgba(242,120,60,.36));
-    animation:orbit-rev 45s linear -18s infinite}
-  @keyframes orbit{to{transform:rotate(360deg)}}
-  @keyframes orbit-rev{to{transform:rotate(-360deg)}}
+  /* ---------- 3D orbital system: Earth + Mars revolving around a tilted Sun ---------- */
+  .solar{position:absolute;right:-140px;top:15%;width:500px;height:500px;z-index:-1;pointer-events:none;perspective:1100px}
+  .system{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+  .ring{position:absolute;left:0;top:0;border-radius:50%;border:1px solid rgba(150,110,70,.18);
+    transform:translate(-50%,-50%) rotateX(62deg)}
+  .ring.earth-ring{width:300px;height:300px}
+  .ring.mars-ring{width:470px;height:470px}
+  .orbit{position:absolute;left:0;top:0;transform-style:preserve-3d}
+  .orbit.earth-orbit{animation:eorbit 24s linear infinite}
+  .orbit.mars-orbit{animation:morbit 46s linear -18s infinite}
+  .pl{position:absolute;left:0;top:0;border-radius:50%;background:center/contain no-repeat}
+  .earth-pl{width:90px;height:90px;margin:-45px 0 0 -45px;background-image:url(images/earth.png);
+    filter:drop-shadow(0 0 16px rgba(120,180,240,.45));animation:eplanet 24s linear infinite}
+  .mars-pl{width:56px;height:56px;margin:-28px 0 0 -28px;background-image:url(images/mars.png);
+    filter:drop-shadow(0 0 12px rgba(242,120,60,.42));animation:mplanet 46s linear -18s infinite}
+  .sun2{position:absolute;left:0;top:0;width:128px;height:128px;margin:-64px 0 0 -64px;
+    background:url(images/sun.png) center/contain no-repeat;
+    filter:drop-shadow(0 0 60px rgba(255,176,74,.6)) drop-shadow(0 0 22px rgba(255,216,128,.55))}
+  @keyframes eorbit{from{transform:rotateX(62deg) rotateZ(0deg)}to{transform:rotateX(62deg) rotateZ(360deg)}}
+  @keyframes morbit{from{transform:rotateX(62deg) rotateZ(0deg)}to{transform:rotateX(62deg) rotateZ(360deg)}}
+  @keyframes eplanet{from{transform:translateX(150px) rotateZ(0deg) rotateX(-62deg)}
+    to{transform:translateX(150px) rotateZ(-360deg) rotateX(-62deg)}}
+  @keyframes mplanet{from{transform:translateX(235px) rotateZ(0deg) rotateX(-62deg)}
+    to{transform:translateX(235px) rotateZ(-360deg) rotateX(-62deg)}}
 
   .scroll-hint{margin-top:60px;display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;
     letter-spacing:.2em;text-transform:uppercase;font-family:'Space Grotesk';font-weight:500}
@@ -269,7 +270,7 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .solar{transform:scale(.52);transform-origin:top right;right:-64px;top:-2%}
+    .solar{transform:scale(.46);transform-origin:top right;right:-20px;top:-3%}
     section{padding:80px 0}
     .writing{padding:38px 28px}
   }
@@ -308,11 +309,13 @@
 <!-- HERO -->
 <section class="hero wrap" id="hero">
   <div class="solar" aria-hidden="true">
-    <div class="ring earth-ring"></div>
-    <div class="ring mars-ring"></div>
-    <div class="sun2"></div>
-    <div class="orbit earth-orbit"><div class="pl"></div></div>
-    <div class="orbit mars-orbit"><div class="pl"></div></div>
+    <div class="system">
+      <div class="ring earth-ring"></div>
+      <div class="ring mars-ring"></div>
+      <div class="orbit earth-orbit"><div class="pl earth-pl"></div></div>
+      <div class="orbit mars-orbit"><div class="pl mars-pl"></div></div>
+      <div class="sun2"></div>
+    </div>
   </div>
   <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
   <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
