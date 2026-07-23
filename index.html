@@ -140,9 +140,7 @@
       radial-gradient(50% 50% at 80% 20%, rgba(255,182,98,.32), transparent 50%),
       radial-gradient(130% 120% at 4% 112%, rgba(24,24,52,.9), transparent 62%),
       linear-gradient(155deg,#0a0912 0%,#150f0f 42%,#0b0a15 100%)}
-  .stars-layer{position:absolute;inset:0;background:url(images/hero-stars.svg) center/cover no-repeat;opacity:.85;
-    -webkit-mask-image:radial-gradient(60% 60% at 80% 20%, transparent 8%, #000 55%);
-    mask-image:radial-gradient(60% 60% at 80% 20%, transparent 8%, #000 55%)}
+  #herostars{position:absolute;inset:0;width:100%;height:100%}
   .hero-bg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;
     background:linear-gradient(to bottom, transparent, #fffaf1)}
   .pworld{position:absolute;inset:0}
@@ -345,7 +343,7 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true">
-    <div class="stars-layer"></div>
+    <canvas id="herostars"></canvas>
     <div class="pworld">
       <div class="pw w-mercury"><div class="pl3 p-mercury"></div></div>
       <div class="pw w-venus"><div class="pl3 p-venus"></div></div>
@@ -603,7 +601,45 @@
   }
   if(!reduce) draw();
 
-  /* the celestial bodies drift via CSS float animations (see .sun/.planet/.earth) */
+  /* hero starfield — fewer, cleaner, gently drifting + twinkling */
+  (function(){
+    var cv=document.getElementById('herostars'); if(!cv) return;
+    var cx=cv.getContext('2d'), st=[], W2,H2, DPR2=Math.min(window.devicePixelRatio||1,2);
+    var SUNX=0.80, SUNY=0.20;
+    function build(){
+      var r=cv.getBoundingClientRect(); if(!r.width) return;
+      W2=cv.width=Math.round(r.width*DPR2); H2=cv.height=Math.round(r.height*DPR2);
+      cv.style.width=r.width+'px'; cv.style.height=r.height+'px';
+      var n=Math.min(78, Math.round(r.width*r.height/21000)); st=[];
+      var guard=0;
+      while(st.length<n && guard++<n*4){
+        var x=Math.random(), y=Math.random();
+        var dx=x-SUNX, dy=y-SUNY;
+        if(Math.sqrt(dx*dx+dy*dy)<0.2 && Math.random()<0.8) continue;   // keep clear of the sun
+        if(y>0.9) continue;                                            // avoid the bottom fade
+        st.push({x:x*W2, y:y*H2, r:(Math.random()*0.85+0.4)*DPR2, base:Math.random()*0.45+0.32,
+          tw:Math.random()*6.28, sp:Math.random()*0.7+0.3,
+          vx:(Math.random()-0.5)*0.05*DPR2, vy:-(Math.random()*0.05+0.02)*DPR2,
+          col:(Math.random()<0.16?(Math.random()<0.5?'255,230,200':'200,218,255'):'255,255,255')});
+      }
+    }
+    build(); window.addEventListener('resize', build);
+    var tt=0;
+    function loop(){
+      tt+=0.016; cx.clearRect(0,0,W2,H2);
+      for(var i=0;i<st.length;i++){ var s=st[i];
+        s.x+=s.vx; s.y+=s.vy;
+        if(s.y<-4){ s.y=H2+4; s.x=Math.random()*W2; }
+        if(s.x<-4)s.x=W2+4; else if(s.x>W2+4)s.x=-4;
+        var a=s.base*(0.4+0.6*(0.5+0.5*Math.sin(tt*s.sp+s.tw)));
+        cx.beginPath(); cx.fillStyle='rgba('+s.col+','+a.toFixed(2)+')';
+        cx.arc(s.x,s.y,s.r,0,6.283); cx.fill();
+      }
+      requestAnimationFrame(loop);
+    }
+    if(reduce){ for(var i=0;i<st.length;i++){var s=st[i];cx.fillStyle='rgba('+s.col+','+s.base.toFixed(2)+')';cx.beginPath();cx.arc(s.x,s.y,s.r,0,6.283);cx.fill();} }
+    else loop();
+  })();
 })();
 </script>
 </body>
