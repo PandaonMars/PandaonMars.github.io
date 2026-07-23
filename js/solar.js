@@ -14,7 +14,7 @@
   renderer.outputEncoding = THREE.sRGBEncoding;
 
   var scene  = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 2000);
+  var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 2000);
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.34));
   var sunLight = new THREE.PointLight(0xfff0d4, 2.5, 0, 2);
@@ -90,8 +90,8 @@
   // ---- camera framing: system sits in the right portion of the hero ----
   function place(){
     var wide = (canvas.clientWidth || 1) / (canvas.clientHeight || 1) > 0.9;
-    if (wide){ camera.position.set(4, 18, 66); camera.lookAt(-17, -7.6, 0); }
-    else     { camera.position.set(2, 18, 76); camera.lookAt(-1, -19, 0); }
+    if (wide){ camera.position.set(2, 34, 56); camera.lookAt(-16.5, -7.4, 0); }
+    else     { camera.position.set(1, 36, 82); camera.lookAt(-1, -29, 0); }
   }
   function resize(){
     var w = canvas.clientWidth, h = canvas.clientHeight;
