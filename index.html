@@ -132,18 +132,29 @@
   .btn.ghost:hover{border-color:var(--cosmos-2);background:rgba(224,104,74,.09);transform:translateY(-3px)}
   .btn svg{width:16px;height:16px}
 
-  /* ---------- celestial bodies: real NASA imagery (Earth · Mars) ---------- */
-  .earth,.planet{position:absolute;z-index:-1;pointer-events:none;aspect-ratio:1;
-    background:center/contain no-repeat}
-  .earth{right:9vw;top:24%;width:min(19vw,212px);
+  /* ---------- orbital system: Earth + Mars revolving around the Sun ---------- */
+  .solar{position:absolute;right:-150px;top:13%;width:520px;height:520px;z-index:-1;pointer-events:none}
+  .solar .sun2{position:absolute;left:50%;top:50%;width:132px;height:132px;margin:-66px 0 0 -66px;
+    border-radius:50%;background:url(images/sun.png) center/contain no-repeat;
+    filter:drop-shadow(0 0 66px rgba(255,176,74,.6)) drop-shadow(0 0 24px rgba(255,216,128,.55))}
+  .ring{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);
+    border:1px solid rgba(150,110,70,.15)}
+  .ring.earth-ring{width:310px;height:310px}
+  .ring.mars-ring{width:456px;height:456px}
+  .orbit{position:absolute;left:50%;top:50%;width:0;height:0}
+  .orbit.earth-orbit{animation:orbit 24s linear infinite}
+  .orbit.mars-orbit{animation:orbit 45s linear -18s infinite}
+  .orbit .pl{position:absolute;border-radius:50%;background:center/contain no-repeat}
+  .earth-orbit .pl{width:92px;height:92px;left:-46px;top:-201px;
     background-image:url(images/earth.png);
-    filter:drop-shadow(0 8px 32px rgba(18,54,100,.35)) drop-shadow(0 0 24px rgba(120,180,240,.42));
-    animation:float 17s ease-in-out infinite;animation-delay:-4s}
-  .planet{right:18vw;top:55%;width:min(10.5vw,112px);
+    filter:drop-shadow(0 6px 20px rgba(18,54,100,.4)) drop-shadow(0 0 18px rgba(120,180,240,.42));
+    animation:orbit-rev 24s linear infinite}
+  .mars-orbit .pl{width:58px;height:58px;left:-29px;top:-257px;
     background-image:url(images/mars.png);
-    filter:drop-shadow(0 6px 24px rgba(90,30,8,.4)) drop-shadow(0 0 18px rgba(242,120,60,.34));
-    animation:float 20s ease-in-out infinite reverse;animation-delay:-8s}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+    filter:drop-shadow(0 5px 16px rgba(90,30,8,.45)) drop-shadow(0 0 14px rgba(242,120,60,.36));
+    animation:orbit-rev 45s linear -18s infinite}
+  @keyframes orbit{to{transform:rotate(360deg)}}
+  @keyframes orbit-rev{to{transform:rotate(-360deg)}}
 
   .scroll-hint{margin-top:60px;display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;
     letter-spacing:.2em;text-transform:uppercase;font-family:'Space Grotesk';font-weight:500}
@@ -258,8 +269,7 @@
     .cards{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work.feat{grid-column:span 1}
-    .earth{top:9%;right:4vw;width:min(29vw,148px)}
-    .planet{top:70%;right:6vw;width:min(18vw,88px)}
+    .solar{transform:scale(.52);transform-origin:top right;right:-64px;top:-2%}
     section{padding:80px 0}
     .writing{padding:38px 28px}
   }
@@ -297,8 +307,13 @@
 
 <!-- HERO -->
 <section class="hero wrap" id="hero">
-  <div class="planet" aria-hidden="true"></div>
-  <div class="earth" aria-hidden="true"></div>
+  <div class="solar" aria-hidden="true">
+    <div class="ring earth-ring"></div>
+    <div class="ring mars-ring"></div>
+    <div class="sun2"></div>
+    <div class="orbit earth-orbit"><div class="pl"></div></div>
+    <div class="orbit mars-orbit"><div class="pl"></div></div>
+  </div>
   <span class="badge reveal in"><span class="dot"></span>Building from Earth · aiming for Mars 🐼</span>
   <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
   <div class="sub-cn reveal in d1">知行合一 · Knowledge as Action</div>
