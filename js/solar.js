@@ -90,7 +90,7 @@
   // ---- camera framing: system sits in the right portion of the hero ----
   function place(){
     var wide = (canvas.clientWidth || 1) / (canvas.clientHeight || 1) > 0.9;
-    if (wide){ camera.position.set(4, 15, 48); camera.lookAt(-12.6, -4, 0); }
+    if (wide){ camera.position.set(4, 18, 66); camera.lookAt(-17, -7.6, 0); }
     else     { camera.position.set(2, 18, 76); camera.lookAt(-1, -19, 0); }
   }
   function resize(){
