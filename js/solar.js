@@ -48,14 +48,14 @@
 
   // ---- Planets ---- [name, radius, orbit, revSpeed(rad/s), spinSpeed(rad/s), axialTilt(rad)]
   var defs = [
-    ['mercury', 0.26,  3.4, 0.150, 0.30, 0.03],
-    ['venus',   0.42,  4.4, 0.115, 0.14, 0.05],
-    ['earth',   0.46,  5.4, 0.092, 0.55, 0.41],
-    ['mars',    0.34,  6.4, 0.074, 0.52, 0.44],
-    ['jupiter', 1.05,  8.0, 0.045, 0.70, 0.05],
-    ['saturn',  0.92,  9.8, 0.035, 0.62, 0.47],
-    ['uranus',  0.66, 11.3, 0.026, 0.36, 1.71],
-    ['neptune', 0.64, 12.6, 0.021, 0.36, 0.49]
+    ['mercury', 0.22,  3.6, 0.150, 0.30, 0.03],
+    ['venus',   0.36,  5.4, 0.115, 0.14, 0.05],
+    ['earth',   0.40,  7.2, 0.092, 0.55, 0.41],
+    ['mars',    0.30,  9.0, 0.074, 0.52, 0.44],
+    ['jupiter', 0.92, 11.4, 0.045, 0.70, 0.05],
+    ['saturn',  0.80, 14.2, 0.035, 0.62, 0.47],
+    ['uranus',  0.56, 16.6, 0.026, 0.36, 1.71],
+    ['neptune', 0.54, 18.8, 0.021, 0.36, 0.49]
   ];
   var planets = [];
   defs.forEach(function(d){
@@ -90,8 +90,8 @@
   // ---- camera framing: system sits in the right portion of the hero ----
   function place(){
     var wide = (canvas.clientWidth || 1) / (canvas.clientHeight || 1) > 0.9;
-    if (wide){ camera.position.set(2, 34, 56); camera.lookAt(-22, -21, 0); }
-    else     { camera.position.set(1, 36, 82); camera.lookAt(-1, -29, 0); }
+    if (wide){ camera.position.set(3, 50, 83); camera.lookAt(-33, -31, 0); }
+    else     { camera.position.set(1, 54, 122); camera.lookAt(-1, -43, 0); }
   }
   function resize(){
     var w = canvas.clientWidth, h = canvas.clientHeight;
