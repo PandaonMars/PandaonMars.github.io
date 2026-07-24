@@ -25,7 +25,7 @@
 
   // ---- Sun ----
   var sun = new THREE.Mesh(
-    new THREE.SphereGeometry(2.5, 48, 48),
+    new THREE.SphereGeometry(3.2, 48, 48),
     new THREE.MeshBasicMaterial({ map: tex('sun') })
   );
   scene.add(sun);
@@ -42,20 +42,20 @@
     var sp = new THREE.Sprite(new THREE.SpriteMaterial({
       map: new THREE.CanvasTexture(c), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true
     }));
-    sp.scale.set(13, 13, 1);
+    sp.scale.set(17, 17, 1);
     sun.add(sp);
   })();
 
   // ---- Planets ---- [name, radius, orbit, revSpeed(rad/s), spinSpeed(rad/s), axialTilt(rad)]
   var defs = [
-    ['mercury', 0.22,  3.6, 0.150, 0.30, 0.03],
-    ['venus',   0.36,  5.4, 0.115, 0.14, 0.05],
-    ['earth',   0.40,  7.2, 0.092, 0.55, 0.41],
-    ['mars',    0.30,  9.0, 0.074, 0.52, 0.44],
-    ['jupiter', 0.92, 11.4, 0.045, 0.70, 0.05],
-    ['saturn',  0.80, 14.2, 0.035, 0.62, 0.47],
-    ['uranus',  0.56, 16.6, 0.026, 0.36, 1.71],
-    ['neptune', 0.54, 18.8, 0.021, 0.36, 0.49]
+    ['mercury', 0.36,  4.7, 0.150, 0.30, 0.03],
+    ['venus',   0.58,  6.3, 0.115, 0.14, 0.05],
+    ['earth',   0.62,  7.9, 0.092, 0.55, 0.41],
+    ['mars',    0.46,  9.5, 0.074, 0.52, 0.44],
+    ['jupiter', 1.32, 11.4, 0.045, 0.70, 0.05],
+    ['saturn',  1.12, 14.2, 0.035, 0.62, 0.47],
+    ['uranus',  0.86, 16.6, 0.026, 0.36, 1.71],
+    ['neptune', 0.82, 18.8, 0.021, 0.36, 0.49]
   ];
   var planets = [];
   defs.forEach(function(d){
@@ -90,8 +90,8 @@
   // ---- camera framing: system sits in the right portion of the hero ----
   function place(){
     var wide = (canvas.clientWidth || 1) / (canvas.clientHeight || 1) > 0.9;
-    if (wide){ camera.position.set(3, 50, 83); camera.lookAt(-33, -31, 0); }
-    else     { camera.position.set(1, 54, 122); camera.lookAt(-1, -43, 0); }
+    if (wide){ camera.position.set(3, 46, 76); camera.lookAt(-31, -29, 0); }
+    else     { camera.position.set(1, 55, 124); camera.lookAt(-1, -48, 0); }
   }
   function resize(){
     var w = canvas.clientWidth, h = canvas.clientHeight;
