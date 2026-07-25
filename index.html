@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://pandaonmars.github.io/logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2226%22%20r%3D%2214%22%20fill%3D%22%232f2d33%22%2F%3E%3Ccircle%20cx%3D%2275%22%20cy%3D%2226%22%20r%3D%2214%22%20fill%3D%22%232f2d33%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2255%22%20r%3D%2235%22%20fill%3D%22%23fff%22%2F%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%2252%22%20rx%3D%2210.5%22%20ry%3D%2213.5%22%20fill%3D%22%232f2d33%22%20transform%3D%22rotate%28-16%2036%2052%29%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2252%22%20rx%3D%2210.5%22%20ry%3D%2213.5%22%20fill%3D%22%232f2d33%22%20transform%3D%22rotate%2816%2064%2052%29%22%2F%3E%3Ccircle%20cx%3D%2237%22%20cy%3D%2254%22%20r%3D%225%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2263%22%20cy%3D%2254%22%20r%3D%225%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2255%22%20r%3D%223%22%20fill%3D%22%231a1920%22%2F%3E%3Ccircle%20cx%3D%2262%22%20cy%3D%2255%22%20r%3D%223%22%20fill%3D%22%231a1920%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%2266%22%20r%3D%225.5%22%20fill%3D%22%23ffb0b8%22%2F%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2266%22%20r%3D%225.5%22%20fill%3D%22%23ffb0b8%22%2F%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2264%22%20rx%3D%224.2%22%20ry%3D%223.1%22%20fill%3D%22%232f2d33%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" href="images/panda.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
   h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink-strong);letter-spacing:-.02em;line-height:1.08}
   .serif{font-family:'Noto Serif SC',serif}
   .cn{font-family:'Noto Serif SC','Sora',serif}
-  .panda{width:1.2em;height:1.2em;vertical-align:-.26em;display:inline-block;flex:none}
+  .panda{width:1.5em;height:1.5em;vertical-align:-.42em;display:inline-block;flex:none}
 
   /* ---------- ambient background ---------- */
   #stars{position:fixed;inset:0;z-index:-3;display:block}
@@ -304,19 +304,6 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="panda" viewBox="0 0 100 100">
-  <circle cx="25" cy="26" r="14" fill="#2f2d33"/><circle cx="75" cy="26" r="14" fill="#2f2d33"/>
-  <circle cx="50" cy="55" r="35" fill="#fff"/>
-  <ellipse cx="36" cy="52" rx="10.5" ry="13.5" fill="#2f2d33" transform="rotate(-16 36 52)"/>
-  <ellipse cx="64" cy="52" rx="10.5" ry="13.5" fill="#2f2d33" transform="rotate(16 64 52)"/>
-  <circle cx="37" cy="54" r="5" fill="#fff"/><circle cx="63" cy="54" r="5" fill="#fff"/>
-  <circle cx="38" cy="55" r="3" fill="#1a1920"/><circle cx="62" cy="55" r="3" fill="#1a1920"/>
-  <circle cx="39.3" cy="53.6" r="1.05" fill="#fff"/><circle cx="63.3" cy="53.6" r="1.05" fill="#fff"/>
-  <circle cx="28" cy="66" r="5.5" fill="#ffb0b8" opacity=".75"/><circle cx="72" cy="66" r="5.5" fill="#ffb0b8" opacity=".75"/>
-  <ellipse cx="50" cy="64" rx="4.2" ry="3.1" fill="#2f2d33"/>
-  <path d="M50 67 q0 4 -5 4 M50 67 q0 4 5 4" stroke="#2f2d33" stroke-width="1.7" fill="none" stroke-linecap="round"/>
-</symbol></svg>
-
 <canvas id="stars"></canvas>
 <div class="bg-glow"></div>
 <div class="grain"></div>
@@ -348,7 +335,7 @@
     <canvas id="scene"></canvas>
   </div>
   <div class="hero-inner wrap">
-    <span class="badge reveal in"><span class="dot"></span><span>Building from Earth · aiming for Mars <svg class="panda" aria-hidden="true"><use href="#panda"/></svg></span></span>
+    <span class="badge reveal in"><span class="dot"></span><span>Building from Earth · aiming for Mars <img class="panda" src="images/panda.svg" alt="panda" aria-hidden="true"></span></span>
     <h1 class="reveal in d1">Qun <span class="grad">Wang</span></h1>
     <div class="sub-cn reveal in d1">知行合一 · Knowledge as Action</div>
     <div class="roles reveal in d2"><span class="type" id="typed"></span><span class="caret"></span></div>
@@ -385,7 +372,7 @@
       <div class="fact"><span class="k">Core Stack</span><span class="v">AWS · Python · Quant · AI Agents</span></div>
       <div class="fact"><span class="k">Method</span><span class="v"><span class="cn">归藏万物，见其唯一</span></span></div>
       <div class="fact"><span class="k">Operating System</span><span class="v">知行合一 · Knowledge as Action</span></div>
-      <div class="fact"><span class="k">Coordinates</span><span class="v">Earth → Mars <svg class="panda" aria-hidden="true"><use href="#panda"/></svg></span></div>
+      <div class="fact"><span class="k">Coordinates</span><span class="v">Earth → Mars <img class="panda" src="images/panda.svg" alt="panda" aria-hidden="true"></span></div>
     </div>
   </div>
 </section>
@@ -514,7 +501,7 @@
 <footer>
   <div class="wrap foot">
     <span>© 2017 – <span id="year"></span> Qun Wang · <span class="cn">归藏万物，见其唯一</span></span>
-    <span>Panda on Mars <svg class="panda" aria-hidden="true"><use href="#panda"/></svg> — built with intent ·<a href="https://www.solarsystemscope.com/textures" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">planet textures</a> CC BY · Milky Way © <a href="https://www.eso.org/public/images/eso0932a/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">ESO</a> CC BY 4.0</span>
+    <span>Panda on Mars <img class="panda" src="images/panda.svg" alt="panda" aria-hidden="true"> — built with intent ·<a href="https://www.solarsystemscope.com/textures" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">planet textures</a> CC BY · Milky Way © <a href="https://www.eso.org/public/images/eso0932a/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">ESO</a> CC BY 4.0 · panda <a href="https://openmoji.org" target="_blank" rel="noopener" style="border-bottom:1px solid var(--panel-brd)">OpenMoji</a> CC BY-SA</span>
   </div>
 </footer>
 
