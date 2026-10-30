@@ -62,7 +62,7 @@
 
 配色定义在 `index.html` 的 `:root` 变量里（火星橙 `--mars:#f2622e`、奶油底 `--bg:#fffaf1`、墨棕 `--ink:#5b4a3d`）。改配色改这里，不要散落硬编码。
 
-字体走 Google Fonts CDN：Space Grotesk / Sora / Noto Serif SC。
+字体自托管（不走 Google Fonts CDN，避免欧盟访客 IP 传给第三方）：Space Grotesk / Sora / Noto Serif SC，woff2 放在 `fonts/`，`@font-face` 写在 `index.html` 内联 `<style>` 开头。Noto Serif SC 按 unicode-range 切片，只收页面用到的字所在的切片；新增页面文字若落进没收的切片，需重新从 Google Fonts 下载对应切片。新页面不要再引用 fonts.googleapis.com / fonts.gstatic.com。
 
 素材署名：3D 太阳系纹理来自 solarsystemscope.com，星空背景来自 ESO —— **改动 hero 时保留 credit 链接**。
 
